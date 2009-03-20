@@ -1,7 +1,12 @@
 Sinitter
 ========
 
-Snitter is a sinatra application to demonstrate how to integrate with Twitter OAuth via the twitter_oauth gem.  You can see it running at http://sinitter.moocode.com/
+Sinitter is a sinatra application to demonstrate how to integrate with Twitter OAuth via the [twitter_oauth](http://github.com/moomerman/twitter_oauth/tree/master) gem.
+
+Live Demo
+=========
+
+You can see sinitter running at [here](http://sinitter.moocode.com/).
 
 Setup
 ======
