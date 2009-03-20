@@ -36,7 +36,7 @@ end
 # this is configured on the Twitter application settings page
 get '/auth' do
   # Exchange the request token for an access token.
-  @access_token = @client.login(
+  @access_token = @client.authorize(
     session[:request_token],
     session[:request_token_secret]
   )

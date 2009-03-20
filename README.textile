@@ -15,3 +15,12 @@ Once your application is setup you will have a consumer key and consumer secret.
 <pre><code>consumer_key: YOUR-CONSUMER-KEY
 consumer_secret: YOUR-CONSUMER-SECRET
 </code></pre>
+
+Grab the twitter_oauth gem:
+
+<pre><code>gem sources -a http://gems.github.com
+sudo gem install moomerman-twitter_oauth</code></pre>
+
+Run:
+
+./sinitter.rb
