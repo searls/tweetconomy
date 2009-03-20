@@ -1,0 +1,25 @@
+<h1>Sinitter</h1>
+
+<% unless @user %>
+    <p>
+        Sinitter is an application to demonstrate the integration of Twitter OAuth with sinatra.
+        It also serves as a live test for the <a href="http://github.com/moomerman/twitter_oauth/tree/master">twitter_oauth</a> Ruby gem.
+        The <a href="http://github.com/moomerman/sinitter/tree/master">source</a> for this application is also available on github.
+    </p>
+    <p><a href="/connect">Connect with Twitter</a> [<%= @client.authorized? %>]</p>
+<% else %>
+    <p><a href='/disconnect'>Disconnect</a> [<%= @client.authorized? %>]</p>
+    
+    <form action='/update' method="POST">
+        <textarea name="update" rows="4" cols="50"></textarea>
+        <input type="submit" value="Post to Twitter"/>
+    </form>
+    
+    <% @client.friends.each do |status| %>
+        <p>
+            <img src="<%= status['user']['profile_image_url'] %>"/>
+            <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
+            <%= status['text'] %>
+        </p>
+    <% end %>
+<% end %>
