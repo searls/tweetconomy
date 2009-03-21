@@ -28,11 +28,9 @@
     <%= yield %>
     
     <div id="footer">
-        <% rate = @client.rate_limit_status %>
-
         <br/>
         <small>
-            API calls remaining: <%= rate['remaining_hits'] %>/<%= rate['hourly_limit'] %> per hour
+            API calls remaining: <%= @rate_limit_status['remaining_hits'] %>/<%= @rate_limit_status['hourly_limit'] %> per hour
         </small>
     </div>
     

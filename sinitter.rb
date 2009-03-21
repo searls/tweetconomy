@@ -16,6 +16,7 @@ before do
     :token => session[:access_token],
     :secret => session[:secret_token]
   )
+  @rate_limit_status = @client.rate_limit_status
 end
 
 get '/' do
@@ -31,7 +32,7 @@ end
 
 post '/update' do
   @client.update(params[:update])
-  redirect '/'
+  redirect '/timeline'
 end
 
 get '/messages' do
@@ -63,7 +64,7 @@ get '/auth' do
       session[:access_token] = @access_token.token
       session[:secret_token] = @access_token.secret
       session[:user] = true
-      redirect '/'
+      redirect '/timeline'
     else
       redirect '/'
   end
