@@ -6,13 +6,16 @@ require 'twitter_oauth'
 configure do
   set :sessions, true
   @@config = YAML.load_file("config.yml") rescue nil || {}
-  TwitterOAuth::Client::CLIENT_KEY = @@config['consumer_key']
-  TwitterOAuth::Client::CLIENT_SECRET = @@config['consumer_secret']
 end
 
 before do
   @user = session[:user]
-  @client = TwitterOAuth::Client.new(:token => session[:access_token], :secret => session[:secret_token])
+  @client = TwitterOAuth::Client.new(
+    :consumer_key => @@config['consumer_key'],
+    :consumer_secret => @@config['consumer_secret'],
+    :token => session[:access_token],
+    :secret => session[:secret_token]
+  )
 end
 
 get '/' do
