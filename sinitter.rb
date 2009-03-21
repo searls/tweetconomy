@@ -19,12 +19,25 @@ before do
 end
 
 get '/' do
+  redirect '/timeline' if @user
+  @tweets = @client.public_timeline
   erb :home
+end
+
+get '/timeline' do
+  @tweets = @client.friends_timeline
+  erb :timeline
 end
 
 post '/update' do
   @client.update(params[:update])
   redirect '/'
+end
+
+get '/messages' do
+  @sent = @client.sent_messages
+  @received = @client.messages
+  erb :messages
 end
 
 # store the request tokens and send to Twitter
@@ -63,4 +76,10 @@ get '/disconnect' do
   session[:access_token] = nil
   session[:secret_token] = nil
   redirect '/'
+end
+
+helpers do 
+  def partial(name, options={})
+    erb("_#{name.to_s}".to_sym, options.merge(:layout => false))
+  end
 end

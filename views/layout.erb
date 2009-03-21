@@ -9,11 +9,33 @@
 <div id="content">
     <div id="header">
         <div>
-            <h1>Sinitter</h1>
+            <h1>Sinitter - Twitter OAuth Demo Application</h1>
         </div>
         <br clear="all"/>
     </div>
+    
+    <% if @user %>
+        <div id="nav" style="float:right">
+            <p>
+                <a href='/timeline'>Timeline</a> |
+                <a href='/messages'>Direct Messages</a> |
+                <a href='/disconnect'>Logout</a>
+            </p>
+        </div>
+        <br clear="all"/>
+    <% end %>
+    
     <%= yield %>
+    
+    <div id="footer">
+        <% rate = @client.rate_limit_status %>
+
+        <br/>
+        <small>
+            API calls remaining: <%= rate['remaining_hits'] %>/<%= rate['hourly_limit'] %> per hour
+        </small>
+    </div>
+    
 </div>
 
 </body>

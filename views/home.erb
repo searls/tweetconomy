@@ -1,49 +1,13 @@
-<% unless @user %>
-    <div id="connect_button">
-        <a href="/connect">-> Login via Twitter</a>
-    </div>
-    <h2>About</h2>
-    <p>
-        Sinitter is an application to demonstrate the integration of Twitter OAuth with sinatra and
-        also serves as a live test for the <a href="http://github.com/moomerman/twitter_oauth/tree/master">twitter_oauth</a> Ruby gem.
-    </p>
-    <p>The <a href="http://github.com/moomerman/sinitter/tree/master">source code</a> for this application is available on github.</p>
-<% else %>
-    <div style="float:right">
-        <p><a href='/disconnect'>Logout</a></p>
-    </div>
-    <br clear="all"/>
-    
-    <div style="margin:0 auto; width:700px">
-        <div style="padding-left:90px">
-            <form action='/update' method="POST">
-                <textarea name="update" rows="4" cols="50"></textarea>
-                <input type="submit" value="Post to Twitter"/>
-            </form>
-        </div>
-        
-        <br/>
-        
-        <% @client.friends_timeline.each do |status| %>
-            <p>
-                <div style="float:left; margin:5px">
-                    <img src="<%= status['user']['profile_image_url'] %>" width="48" height="48"/>
-                </div>
-                <div style="">
-                    <a href="http://twitter.com/<%= status['user']['screen_name'] %>">@<%= status['user']['screen_name'] %></a>
-                    <%= status['text'] %>
-                </div>
-                <br clear="all"/>
-            </p>
-        <% end %>
-    </div>
-<% end %>
+<div id="connect_button">
+    <a href="/connect">-> Login via Twitter</a>
+</div>
+<h2>About</h2>
+<p>
+    Sinitter is an application to demonstrate the integration of Twitter OAuth with <a href="http://www.sinatrarb.com/">sinatra</a> and
+    also serves as a live test for the <a href="http://github.com/moomerman/twitter_oauth/tree/master">twitter_oauth</a> Ruby gem.
+</p>
+<p>The <a href="http://github.com/moomerman/sinitter/tree/master">source code</a> for this application is available on github.</p>
+<p>Created and maintained by <a href="http://www.linkedin.com/in/richarddavidtaylor">Richard Taylor</a> (<a href="http://twitter.com/moomerman">@moomerman</a>). Any comments/suggestions welcome</p>
 
-<% rate = @client.rate_limit_status %>
-
-<br/>
-<small>
-    API calls remaining: <%= rate['remaining_hits'] %>/<%= rate['hourly_limit'] %> per hour
-    <br/>
-    Created and maintained by Richard Taylor (<a href="http://twitter.com/moomerman">@moomerman</a>). Any comments/suggestions welcomed
-</small>
+<h2>Public Timeline</h2>
+<%= partial('timeline', :locals => {:tweets => @tweets}) %>
