@@ -14,16 +14,19 @@
         <br clear="all"/>
     </div>
     
-    <% if @user %>
-        <div id="nav" style="float:right">
-            <p>
+    <div id="nav" style="float:right">
+        <p>
+            <a href='/'>Home</a> |
+            <a href='/search'>Search</a>
+            <% if @user %>
+                |
                 <a href='/timeline'>Timeline</a> |
                 <a href='/messages'>Direct Messages</a> |
                 <a href='/disconnect'>Logout</a>
-            </p>
-        </div>
-        <br clear="all"/>
-    <% end %>
+            <% end %>
+        </p>
+    </div>
+    <br clear="all"/>
     
     <%= yield %>
     

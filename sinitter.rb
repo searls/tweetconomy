@@ -41,6 +41,11 @@ get '/messages' do
   erb :messages
 end
 
+get '/search' do
+  @search = @client.search(params[:q], params[:page])
+  erb :search
+end
+
 # store the request tokens and send to Twitter
 get '/connect' do
   request_token = @client.request_token
