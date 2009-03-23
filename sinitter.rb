@@ -42,7 +42,8 @@ get '/messages' do
 end
 
 get '/search' do
-  @search = @client.search(params[:q], params[:page])
+  query = params[:q] || ''
+  @search = @client.search(query, params[:page])
   erb :search
 end
 
