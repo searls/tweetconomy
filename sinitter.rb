@@ -85,6 +85,11 @@ get '/disconnect' do
   redirect '/'
 end
 
+# useful for site monitoring
+get '/ping' do 
+  'pong'
+end
+
 helpers do 
   def partial(name, options={})
     erb("_#{name.to_s}".to_sym, options.merge(:layout => false))
