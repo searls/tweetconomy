@@ -52,7 +52,7 @@ get '/connect' do
   request_token = @client.request_token
   session[:request_token] = request_token.token
   session[:request_token_secret] = request_token.secret
-  redirect request_token.authorize_url  
+  redirect request_token.authorize_url.gsub('authorize', 'authenticate') 
 end
 
 # auth URL is called by twitter after the user has accepted the application
