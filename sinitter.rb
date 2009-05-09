@@ -9,6 +9,7 @@ configure do
 end
 
 before do
+  next if request.path_info =~ /ping$/
   @user = session[:user]
   @client = TwitterOAuth::Client.new(
     :consumer_key => @@config['consumer_key'],
