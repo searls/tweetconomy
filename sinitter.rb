@@ -50,7 +50,9 @@ end
 
 # store the request tokens and send to Twitter
 get '/connect' do
-  request_token = @client.request_token(:oauth_callback => "http://github-sinitter.heroku.com/auth")
+  request_token = @client.request_token(
+    :oauth_callback => ENV['CALLBACK_URL'] || @@config['callback_url']
+  )
   session[:request_token] = request_token.token
   session[:request_token_secret] = request_token.secret
   redirect request_token.authorize_url.gsub('authorize', 'authenticate') 
@@ -60,10 +62,15 @@ end
 # this is configured on the Twitter application settings page
 get '/auth' do
   # Exchange the request token for an access token.
-  @access_token = @client.authorize(
-    session[:request_token],
-    session[:request_token_secret]
-  )
+  
+  begin
+    @access_token = @client.authorize(
+      session[:request_token],
+      session[:request_token_secret],
+      :oauth_verifier => params[:oauth_verifier]
+    )
+  rescue OAuth::Unauthorized
+  end
   
   if @client.authorized?
       # Storing the access tokens so we don't have to go back to Twitter again
