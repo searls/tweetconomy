@@ -12,8 +12,8 @@ before do
   next if request.path_info =~ /ping$/
   @user = session[:user]
   @client = TwitterOAuth::Client.new(
-    :consumer_key => @@config['consumer_key'],
-    :consumer_secret => @@config['consumer_secret'],
+    :consumer_key => ENV['CONSUMER_KEY'] || @@config['consumer_key'],
+    :consumer_secret => ENV['CONSUMER_SECRET'] || @@config['consumer_secret'],
     :token => session[:access_token],
     :secret => session[:secret_token]
   )
