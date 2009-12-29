@@ -44,7 +44,7 @@ end
 
 get '/search' do
   query = params[:q] || ''
-  @search = @client.search(query, params[:page])
+  @search = @client.search(query, :page => params[:page])
   erb :search
 end
 
