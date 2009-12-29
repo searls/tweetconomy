@@ -43,8 +43,8 @@ get '/messages' do
 end
 
 get '/search' do
-  query = params[:q] || ''
-  @search = @client.search(query, :page => params[:page])
+  params[:q] ||= 'sinitter OR twitter_oauth'
+  @search = @client.search(params[:q], :page => params[:page], :per_page => params[:per_page])
   erb :search
 end
 
