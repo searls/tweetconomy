@@ -4,7 +4,7 @@ Sinitter is a "sinatra":http://github.com/bmizerany/sinatra/tree/master applicat
 
 h2. Live Demo
 
-You can see sinitter running at "http://github-sinitter.heroku.com/":http://github-sinitter.heroku.com/.
+You can see sinitter running at "http://sinitter.moocode.com/":http://sinitter.moocode.com/.
 
 h2. Local Setup
 
