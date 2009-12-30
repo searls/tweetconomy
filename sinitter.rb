@@ -22,6 +22,7 @@ end
 
 get '/' do
   redirect '/timeline' if @user
+  @trends = @client.current_trends
   @tweets = @client.public_timeline
   erb :home
 end
