@@ -8,11 +8,11 @@ You can see sinitter running at "http://sinitter.moocode.com/":http://sinitter.m
 
 h2. Local Setup
 
-To run the application locally you'll need to [create a Twitter OAuth Application](http://twitter.com/oauth_clients/new).
+To run the application locally you'll need to "create a Twitter OAuth Application":http://twitter.com/oauth_clients/new.
 
 Once your application is setup you will have a consumer key and consumer secret.  Create config.yml in the root of sinitter eg.
 
-<pre><code>consumer_key: YOUR-CONSUMER-KEY
+<pre><code>consumer_key: YOUR_CONSUMER_KEY
 consumer_secret: YOUR_CONSUMER_SECRET
 callback_url: YOUR_CALLBACK_URL
 </code></pre>
@@ -29,7 +29,9 @@ The application should now be available at <code>http://localhost:4567/</code>
 
 h2. Heroku setup
 
-The demo application runs on Heroku so all you have to do is tell Heroku about your specific configuration.  Assuming you have pushed your application to Heroku, run the following:
+As in the local setup you will need to "create a Twitter OAuth Application":http://twitter.com/oauth_clients/new.
+
+The demo application is already set up to run on Heroku so all you have to do is tell Heroku about your specific configuration.  Assuming you have already pushed the application to Heroku, run the following:
 
 <code>heroku config:add CONSUMER_KEY=<your_consumer_key> CONSUMER_SECRET=<your_consumer_secret> CALLBACK_URL=<your_callback_url></code>
 
