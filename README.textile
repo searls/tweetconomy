@@ -13,7 +13,8 @@ To run the application locally you'll need to [create a Twitter OAuth Applicatio
 Once your application is setup you will have a consumer key and consumer secret.  Create config.yml in the root of sinitter eg.
 
 <pre><code>consumer_key: YOUR-CONSUMER-KEY
-consumer_secret: YOUR-CONSUMER-SECRET
+consumer_secret: YOUR_CONSUMER_SECRET
+callback_url: YOUR_CALLBACK_URL
 </code></pre>
 
 Grab the twitter_oauth gem:
