@@ -18,14 +18,21 @@ consumer_secret: YOUR-CONSUMER-SECRET
 
 Grab the twitter_oauth gem:
 
-<pre><code>gem sources -a http://gems.github.com
-sudo gem install moomerman-twitter_oauth</code></pre>
+<pre><code>sudo gem install twitter_oauth</code></pre>
 
 Run:
 
 <pre><code>./sinitter.rb</code></pre>
 
 The application should now be available at <code>http://localhost:4567/</code>
+
+h2. Heroku setup
+
+The demo application runs on Heroku so all you have to do is tell Heroku about your specific configuration.  Assuming you have pushed your application to Heroku, run the following:
+
+<code>heroku config:add CONSUMER_KEY=<your_consumer_key> CONSUMER_SECRET=<your_consumer_secret> CALLBACK_URL=<your_callback_url></code>
+
+The application should now be running on Heroku.
 
 h2. Step-by-step
 
