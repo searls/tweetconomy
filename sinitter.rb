@@ -2,10 +2,11 @@
 require 'rubygems'
 require 'sinatra'
 require 'twitter_oauth'
+require 'yaml'
 
 configure do
   set :sessions, true
-  @@config = YAML.load_file("config.yml") rescue nil || {}
+  @@config = YAML.load_file("config.yml")
 end
 
 before do
@@ -34,17 +35,17 @@ end
 
 get '/mentions' do
   @tweets = @client.mentions
-  erb:timeline
+  erb :timeline
 end
 
 get '/retweets' do
   @tweets = @client.retweets_of_me
-  erb:timeline
+  erb :timeline
 end
 
 get '/retweeted' do
   @tweets = @client.retweeted_by_me
-  erb:timeline
+  erb :timeline
 end
 
 post '/update' do
