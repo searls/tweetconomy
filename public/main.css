@@ -57,6 +57,7 @@ h2 {
 
 .sign-in,
 #connect_button {
+  font-size:16px;
   text-align: center;
 }
 
@@ -66,4 +67,8 @@ h2 {
   background-color: #0C0;
   color: #fff;
   text-align:center;
+}
+
+.tweet-this .button {
+  font-size:18px;
 }

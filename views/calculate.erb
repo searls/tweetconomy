@@ -5,6 +5,6 @@
 <div class="tweet-this">
     <form action='/update' method="POST">
         <input type="hidden" name="update" value="In my last <%= @tweet_count %> tweets, I used <%= @chars_used %> (<%= @percent_used %>) of the <%= @potential_chars %> characters available to me. How about you? http://tweetconomy.heroku.com"/>
-        <input type="submit" value="tweet (something sort of similar to) this"/>
+        <input class="button" type="submit" value="tweet (something sort of similar to) this"/>
     </form>
 </div>
