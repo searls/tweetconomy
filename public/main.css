@@ -1,12 +1,25 @@
-body {font-size:16px; font-family:helvetica;}
-img {border:none;}
-h2 {font-size:20px;}
+body {
+  font-size:16px; 
+  font-family:helvetica;
+}
 
-#header h1 {margin:0; font-size:24px;}
+img {
+  border:none;
+}
+
+h2 {
+  font-size:20px;
+}
+
+#header h1 {
+  margin:0; 
+  font-size:24px;
+  font-weight: bold;
+}
 
 #content {
-    margin:0 auto;
-    width:850px;
+  margin:0 auto;
+  width:850px;
 }
 
 #connect_button {
@@ -19,4 +32,21 @@ h2 {font-size:20px;}
 #body-wrap {
   margin:20px auto; 
   width:700px
+}
+
+.score {
+	font-size: 38px;
+}
+
+.explanation {
+  margin: 16px; 
+}
+
+#footer {
+  margin-top: 60px;
+  font-size:10px;
+}
+
+.logout {
+  margin-top: 20px;
 }

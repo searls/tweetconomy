@@ -29,12 +29,6 @@ end
 get '/calculate' do
   @tweet_count = @client.user.size
   @potential_chars = 140 * @client.user.size
-  # @client.user.each do |s|
-  #   size = s['text'].size
-  #   @shortest_tweet = size unless @shortest_tweet == nil || @shortest_tweet < size
-  #   @longest_tweet = size unless @longest_tweet > size
-  #   @chars_used += size
-  # end
   sizes = @client.user.map { |s| s['text'].size }
   @shortest_tweet = sizes.min
   @longest_tweet = sizes.max
@@ -73,7 +67,7 @@ get '/auth' do
       session[:access_token] = @access_token.token
       session[:secret_token] = @access_token.secret
       session[:user] = true
-      redirect '/timeline'
+      redirect '/calculate'
     else
       redirect '/'
   end

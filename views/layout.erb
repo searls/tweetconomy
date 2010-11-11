@@ -1,28 +1,26 @@
 <html>
 <head>
-    <title>Tweetconomy</title>
+    <title>Economy of Tweets — Calculate </title>
     <link href="/main.css" media="screen" rel="Stylesheet" type="text/css" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+    <meta twitter-api="<%= @rate_limit_status['remaining_hits'] %>/<%= @rate_limit_status['hourly_limit'] %>"/>
 </head>
-
 <body>
-
 	<div id="content">
 	    <div id="header">
 	        <div>
-	            <h1>Tweetconomy</h1>
+	            <h1>Economy of Tweets</h1>
 	        </div>
 	    </div>
 	    <div id="body-wrap">
 	    	<%= yield %>
 	    </div>
 	    <div id="footer">
-	        <br/>
-	        <small>
-				API calls remaining: <%= @rate_limit_status['remaining_hits'] %>/<%= @rate_limit_status['hourly_limit'] %> per hour
-	        </small>
-	    </div>    
+	        <% if @user %>
+                This pointless distraction was brought to you by <a href="http://twitter.com/searls">@searls</a>.
+                <div class="logout">And as fun as this has all been, I'm sure you're ready to <a href="/disconnect">log out now.</a></div>
+            <% end %>
+	    </div>    	    
 	</div>
-
 </body>
 </html>

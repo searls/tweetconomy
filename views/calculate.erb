@@ -1,3 +1,4 @@
-
-<span class="score">You scored <%= @percent_used %></span>
-<span class="explanation">In your last <%= @tweet_count %> tweets, you utilized <%= @chars_used %> characters out of <%= @potential_chars %> available. Your longest tweet was <%= @longest_tweet %> while your shortest tweet was <%= @shortest_tweet %></span>
+<div class="score">You scored <%= @percent_used %></div>
+<div class="explanation">In your last <%= @tweet_count %> tweets, you utilized <%= @chars_used %> of the <%= @potential_chars %> characters available to you. 
+	<br/>Your shortest tweet was <%= @shortest_tweet %> characters. But, hey, at least your longest tweet was <%= @longest_tweet %>.
+</div>
