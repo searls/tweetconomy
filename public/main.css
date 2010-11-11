@@ -50,3 +50,12 @@ h2 {
 .logout {
   margin-top: 20px;
 }
+
+.tweet-this {
+  float:right;
+}
+
+.sign-in,
+#connect_button {
+  text-align: center;
+}

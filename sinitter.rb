@@ -37,6 +37,11 @@ get '/calculate' do
   erb :calculate
 end
 
+post '/tweet-this' do
+  @client.update(params[:update])
+  redirect '/calculate'
+end
+
 # store the request tokens and send to Twitter
 get '/connect' do
   request_token = @client.request_token(
