@@ -1,4 +1,4 @@
-body {font-size:16px; font-family:verdana;}
+body {font-size:16px; font-family:helvetica;}
 img {border:none;}
 h2 {font-size:20px;}
 
@@ -16,7 +16,7 @@ h2 {font-size:20px;}
   color:red;
 }
 
-.timeline {
-  margin:0 auto; 
+#body-wrap {
+  margin:20px auto; 
   width:700px
 }

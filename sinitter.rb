@@ -22,47 +22,25 @@ before do
 end
 
 get '/' do
-  redirect '/timeline' if @user
-  @trends = @client.current_trends
-  @tweets = @client.public_timeline
-  erb :home
+  redirect '/calculate' if @user
+  erb :signin
 end
 
-get '/timeline' do
-  @tweets = @client.friends_timeline
-  erb :timeline
-end
-
-get '/mentions' do
-  @tweets = @client.mentions
-  erb :timeline
-end
-
-get '/retweets' do
-  @tweets = @client.retweets_of_me
-  erb :timeline
-end
-
-get '/retweeted' do
-  @tweets = @client.retweeted_by_me
-  erb :timeline
-end
-
-post '/update' do
-  @client.update(params[:update])
-  redirect '/timeline'
-end
-
-get '/messages' do
-  @sent = @client.sent_messages
-  @received = @client.messages
-  erb :messages
-end
-
-get '/search' do
-  params[:q] ||= 'sinitter OR twitter_oauth'
-  @search = @client.search(params[:q], :page => params[:page], :per_page => params[:per_page])
-  erb :search
+get '/calculate' do
+  @tweet_count = @client.user.size
+  @potential_chars = 140 * @client.user.size
+  # @client.user.each do |s|
+  #   size = s['text'].size
+  #   @shortest_tweet = size unless @shortest_tweet == nil || @shortest_tweet < size
+  #   @longest_tweet = size unless @longest_tweet > size
+  #   @chars_used += size
+  # end
+  sizes = @client.user.map { |s| s['text'].size }
+  @shortest_tweet = sizes.min
+  @longest_tweet = sizes.max
+  @chars_used = sizes.reduce(:+)
+  @percent_used = sprintf("%0.2f\%", (@chars_used / (@potential_chars*1.0))*100)
+  erb :calculate
 end
 
 # store the request tokens and send to Twitter
@@ -108,11 +86,6 @@ get '/disconnect' do
   session[:access_token] = nil
   session[:secret_token] = nil
   redirect '/'
-end
-
-# useful for site monitoring
-get '/ping' do 
-  'pong'
 end
 
 helpers do 
