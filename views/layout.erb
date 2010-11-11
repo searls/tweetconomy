@@ -6,6 +6,9 @@
     <meta twitter-api="<%= @rate_limit_status['remaining_hits'] %>/<%= @rate_limit_status['hourly_limit'] %>"/>
 </head>
 <body>
+    <% if @was_just_tweeted %>
+      <div class="been-tweeted">Thanks! Your score has just been tweeted!</div>
+    <% end %>
 	<div id="content">
 	    <div id="header">
 	        <div>

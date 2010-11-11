@@ -27,6 +27,7 @@ get '/' do
 end
 
 get '/calculate' do
+  @was_just_tweeted = params[:tweeted]
   @tweet_count = @client.user.size
   @potential_chars = 140 * @client.user.size
   sizes = @client.user.map { |s| s['text'].size }
@@ -39,7 +40,7 @@ end
 
 post '/update' do
   @client.update(params[:update])
-  redirect '/calculate'
+  redirect '/calculate?tweeted=true'
 end
 
 # store the request tokens and send to Twitter

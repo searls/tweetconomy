@@ -59,3 +59,11 @@ h2 {
 #connect_button {
   text-align: center;
 }
+
+.been-tweeted {
+  margin-bottom:20px;
+  padding: 5px;
+  background-color: #0C0;
+  color: #fff;
+  text-align:center;
+}
