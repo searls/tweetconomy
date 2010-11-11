@@ -37,7 +37,7 @@ get '/calculate' do
   erb :calculate
 end
 
-post '/tweet-this' do
+post '/update' do
   @client.update(params[:update])
   redirect '/calculate'
 end
